@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  MATEMATICA
+  PORTUGUES
+  FISICA
+  QUIMICA
+  GEOGRAFIA
+  HISTORIA
+  CIENCIAS
+  INGLES
+  ESPANHOL
+  OUTROS
+}
+
+model Dear {
+  id         String       @unique @default(uuid())
+  name       String
+  email      String       @unique
+  password   String
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  teacherId  String       @unique
+  teacher    Teacher      @relation(fields: [teacherId], references: [id])
+  scheduling Scheduling[]
+}
+
+model Teacher {
+  id          String       @unique @default(uuid())
+  name        String
+  email       String       @unique
+  description String       @db.Char(200)
+  password    String
+  createdAt   DateTime     @updatedAt
+  category    Category
+  dear        Dear[]
+  scheduling  Scheduling[]
+}
+
+model Scheduling {
+  id          String   @unique @default(uuid())
+  name        String
+  description String   @db.Char(200)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  dearId      String
+  teacherId   String
+  dear        Dear     @relation(fields: [dearId], references: [id])
+  teacher     Teacher  @relation(fields: [teacherId], references: [id])
+}
