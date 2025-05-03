@@ -158,7 +158,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/root/edu-meet-api/src/generated/prisma",
+      "value": "/home/bruno/edu-meet/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -172,12 +172,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/root/edu-meet-api/prisma/schema.prisma",
+    "sourceFilePath": "/home/bruno/edu-meet/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.6.0",
@@ -186,11 +185,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://neondb_owner:npg_SItsGL51QAOB@ep-icy-snowflake-acqlcsuo-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require"
+        "value": null
       }
     }
   },
