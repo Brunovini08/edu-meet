@@ -1,4 +1,3 @@
-import { Dear } from './../generated/prisma/index.d';
 import { PrismaClient } from '@prisma/client';
 import type { ICreateDear, IDear } from "../types/dear.type";
 
